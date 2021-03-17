@@ -1,4 +1,4 @@
-//===-- egcpp_h/random_walk.h - Random Walk ---------------------*- C++ -*-===//
+//===-- egcpp - Library Preamble --------------------------------*- C++ -*-===//
 //
 // Copyright 2021 Michael Bolus
 //
@@ -17,34 +17,27 @@
 //===----------------------------------------------------------------------===//
 ///
 /// \file
-/// This file declares a random walk simulation.
+/// This file creates the preamble for the eg-cpp library.
 ///
-/// \brief declares a random walk simulation
+/// \brief create preamble for eg-cpp library
 //===----------------------------------------------------------------------===//
 
-#ifndef EGCPP_RANDOM_WALK_H
-#define EGCPP_RANDOM_WALK_H
+#ifndef LFPRATIOMETER
+#define LFPRATIOMETER
 
-// TODO(mfbolus): this is a fudge. I believe the include should never actually
-// be called, but it allows clangd to resolve these symbols.
-#ifndef EGCPP
-#include <egcpp>
-#endif
+#define LFPRATIOMETER_VERSION_MAJOR @CMAKE_PROJECT_VERSION_MAJOR@
+#define LFPRATIOMETER_VERSION_MINOR @CMAKE_PROJECT_VERSION_MINOR@
 
-/// An example namespace
-namespace example {
+// Needed headers from other libraries.
+#include <stdio.h>
+#include <malloc.h>
+#include <math.h>
+#include <complex.h>
+#include <vector>
+#include <iostream>
+#include <fftw3.h>
 
-/**
- * @brief      simulates random walk
- *
- * @param[in]  n_t   number of time samples
- * @param[in]  Q     process noise covariance
- * @param[in]  x0    initial value
- *
- * @return     random variable
- */
-auto random_walk(size_t n_t, const arma::mat& Q, arma::vec x0) -> arma::mat;
-
-}  // namespace example
+// this project's headers.
+#include "lfpRatiometer_h/lfpRatiometer.h"
 
 #endif

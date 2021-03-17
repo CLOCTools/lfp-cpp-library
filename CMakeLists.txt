@@ -3,12 +3,9 @@ cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 # set project name and version (MAJOR.minor.patch)
 project(egcpp VERSION 0.1.0 LANGUAGES CXX C)
 # some name variants I will be using:
-set(CMAKE_PROJECT_NAME_CAP EGCPP)#all caps
-
-# TODO(mfbolus): Update
-set(PROJECT_URL https://github.com/mfbolus/eg-cpp-library)
-
-set(CMAKE_PROJECT_DESCRIPTION "Example")
+set(CMAKE_PROJECT_NAME_CAP LFPRATIOMETER)#all caps
+set(PROJECT_URL https://github.com/amborsa10/lfp-cpp-library)
+set(CMAKE_PROJECT_DESCRIPTION "LFP CXX Library")
 
 # WINDOWS WARNING
 if (WIN32)
@@ -109,6 +106,9 @@ include(Armadillo)
 
 # HDF5
 include(HDF5)
+
+# FFTW3
+include(FFTW)
 
 find_package(Doxygen COMPONENTS dot
              OPTIONAL_COMPONENTS mscgen dia)

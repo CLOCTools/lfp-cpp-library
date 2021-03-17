@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 # set project name and version (MAJOR.minor.patch)
-project(egcpp VERSION 0.1.0 LANGUAGES CXX C)
+project(lfpRatiometer VERSION 0.1.0 LANGUAGES CXX C)
 # some name variants I will be using:
 set(CMAKE_PROJECT_NAME_CAP LFPRATIOMETER)#all caps
 set(PROJECT_URL https://github.com/amborsa10/lfp-cpp-library)
@@ -92,21 +92,6 @@ endif()
 # pkg-config used for libraries that were not installed with CMake config files.
 # provides `pkg_check_modules`
 find_package(PkgConfig REQUIRED)
-
-if(${CMAKE_PROJECT_NAME_CAP}_BUILD_STATIC)
-  #statically-linking against openblas in this case
-
-# OpenBLAS
-include(OpenBLAS)
-
-endif()
-
-# ARMADILLO
-include(Armadillo)
-
-# HDF5
-include(HDF5)
-
 # FFTW3
 include(FFTW)
 

@@ -22,11 +22,11 @@
 /// \brief create preamble for eg-cpp library
 //===----------------------------------------------------------------------===//
 
-#ifndef LFPRATIOMETER
-#define LFPRATIOMETER
+#ifndef @CMAKE_PROJECT_NAME_CAP@
+#define @CMAKE_PROJECT_NAME_CAP@
 
-#define LFPRATIOMETER_VERSION_MAJOR @CMAKE_PROJECT_VERSION_MAJOR@
-#define LFPRATIOMETER_VERSION_MINOR @CMAKE_PROJECT_VERSION_MINOR@
+#define @CMAKE_PROJECT_NAME_CAP@_VERSION_MAJOR @CMAKE_PROJECT_VERSION_MAJOR@
+#define @CMAKE_PROJECT_NAME_CAP@_VERSION_MINOR @CMAKE_PROJECT_VERSION_MINOR@
 
 // Needed headers from other libraries.
 #include <stdio.h>

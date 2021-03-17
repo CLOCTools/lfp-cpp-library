@@ -33,7 +33,7 @@ message(STATUS "*** Looking for external libraries")
 ############ FIND LIBRARIES
 ###########################
 # Find our package.
-find_package(egcpp REQUIRED)
+find_package(lfpRatiometer REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LDSCTRLEST_CXX_FLAGS}")
 
@@ -44,7 +44,7 @@ message(STATUS "CMAKE_SHARED_LINKER_FLAGS = ${CMAKE_SHARED_LINKER_FLAGS}")
 ###################
 # e.g., add executable
 add_executable(test src/main.cpp)
-target_link_libraries(test PUBLIC egcpp ${EGCPP_LIBRARIES})
-target_link_directories(test PUBLIC ${EGCPP_DIRS})
-target_include_directories(test PUBLIC ${EGCPP_INCLUDE_DIRS})
+target_link_libraries(test PUBLIC lfpRatiometer ${LFPRATIOMETER_LIBRARIES})
+target_link_directories(test PUBLIC ${LFPRATIOMETER_DIRS})
+target_include_directories(test PUBLIC ${LFPRATIOMETER_INCLUDE_DIRS})
 

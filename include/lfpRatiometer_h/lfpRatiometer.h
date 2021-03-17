@@ -3,7 +3,7 @@
 
 // just here so clangd can resolve these symbols
 #ifndef LFPRATIOMETER
-#include <lfpRatiometer.in>
+#include <lfpRatiometer>
 #endif
 
 class lfpRatiometer {

@@ -1,5 +1,5 @@
 ## use find_package, requires FindFFTW.cmake
-find_package(FFTW COMPONENTS)
+find_package(FFTW)
 
 if(FFTW_FOUND)
   list(APPEND PROJECT_REQUIRED_INCLUDE_DIRS ${FFTW_INCLUDE_DIRS})

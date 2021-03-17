@@ -1,4 +1,4 @@
-#include <lfpRatiometer.h>
+#include <lfpRatiometer>
 
 using namespace std;
 

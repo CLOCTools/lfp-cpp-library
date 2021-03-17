@@ -30,7 +30,7 @@
 
 // Needed headers from other libraries.
 #include <stdio.h>
-// #include <malloc.h>
+#include <malloc.h>
 #include <math.h>
 #include <complex.h>
 #include <vector>

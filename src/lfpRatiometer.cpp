@@ -109,23 +109,29 @@ void lfpRatiometer::window_hamming(){
 
 // function that calculates the LF/HF ratio
 void lfpRatiometer::calcRatio() {
-    makePSD();
 
-    double lf_total = 0;
-    double hf_total = 0;
+    // only calculate if the input vector is full
+    if (in_raw.size() == N) {
+        makePSD();
 
-    // iterates over PSD, calculating running sums in each band
-    for (int n=0; n<f_size; n++){
-        if (allfreqs.at(n)>= lf_low && allfreqs.at(n) <= lf_high) {
-            lf_total = lf_total + psd.at(n);
+        double lf_total = 0;
+        double hf_total = 0;
+
+        // iterates over PSD, calculating running sums in each band
+        for (int n=0; n<f_size; n++){
+            if (allfreqs.at(n)>= lf_low && allfreqs.at(n) <= lf_high) {
+                lf_total = lf_total + psd.at(n);
+            }
+            if (allfreqs.at(n) >= hf_low && allfreqs.at(n) <= hf_high){
+                hf_total = hf_total + psd.at(n);
+            }
         }
-        if (allfreqs.at(n) >= hf_low && allfreqs.at(n) <= hf_high){
-            hf_total = hf_total + psd.at(n);
-        }
+
+        // take ratio
+        lf_hf_ratio = lf_total/hf_total;
     }
-
-    // take ratio
-    lf_hf_ratio = lf_total/hf_total;
+    else {lf_hf_ratio = nan("");}
+    
 
 }
 

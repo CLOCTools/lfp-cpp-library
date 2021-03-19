@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 # set project name and version (MAJOR.minor.patch)
 project(lfpRatiometer VERSION 0.1.0 LANGUAGES CXX C)

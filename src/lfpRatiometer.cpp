@@ -130,7 +130,8 @@ void lfpRatiometer::calcRatio() {
         // take ratio
         lf_hf_ratio = lf_total/hf_total;
     }
-    else {lf_hf_ratio = nan("");}
+    // else {lf_hf_ratio = nan("");}
+    else {lf_hf_ratio = -1;}
     
 
 }

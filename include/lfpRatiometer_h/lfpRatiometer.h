@@ -14,6 +14,9 @@ class lfpRatiometer {
         // destructor
         ~lfpRatiometer(void);
 
+        // changing FFT plan (for RTXI only)
+        void changeFFTPlan(int N_input, double sampling_input);
+
         // calculate LF/HF ratio
         void calcRatio();
 

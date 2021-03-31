@@ -50,6 +50,31 @@ lfpRatiometer::~lfpRatiometer(void) {
     return;
 }
 
+// this function changes the FFT plan (previously defined in the constructor)
+// the existence of this function is very imperfect 
+// this function probably shouldn't be used except for the RTXI plugin
+void lfpRatiometer::changeFFTPlan(int N_input, double sampling_input) {
+    // destroying previous FFT plan (similar to destructor)
+    fftw_destroy_plan(p);
+    fftw_free(out);
+    fftw_free(in);
+
+    // making new plan (similar to constructor)
+    N=N_input;
+    f_size=N/2 + 1;
+    sampling=sampling_input;
+
+    allfreqs.clear();
+    for (int n=0; n<f_size;n++){
+        allfreqs.push_back(sampling*n/N);
+    }
+
+    in = (double*) fftw_malloc(sizeof(double)*N);
+    out = fftw_alloc_complex(N);
+    p = fftw_plan_dft_r2c_1d(N,in,out,FFTW_MEASURE);
+
+}
+
 // allows users to set ends of LF&HF bands
 void lfpRatiometer::setRatioParams(double lf_low_input, double lf_high_input, double hf_low_input, double hf_high_input) {
     lf_low = lf_low_input;

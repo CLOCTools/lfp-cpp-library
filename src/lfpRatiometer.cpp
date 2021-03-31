@@ -18,7 +18,7 @@ lfpRatiometer::lfpRatiometer(int N_input, double sampling_input) {
     hf_high = 90;
     
     // setting default window
-    window_hamming();
+    window_rect();
 
     // establishing frequencies that will be associated with DFT output
     for (int n=0; n<f_size;n++){

@@ -29,6 +29,14 @@ class lfpRatiometer {
         double getRatio() const { return lf_hf_ratio; };
         std::vector<double> getFreqs() { return allfreqs; };
         std::vector<double> getPSD() { return psd; }
+        std::vector<double> getFreqBounds() { 
+            std::vector<double> freqbounds;
+            freqbounds.push_back(lf_low);
+            freqbounds.push_back(lf_high);
+            freqbounds.push_back(hf_low);
+            freqbounds.push_back(hf_high);
+            return freqbounds;
+        };
 
 
         // modifying raw time series

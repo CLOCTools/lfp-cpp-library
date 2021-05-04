@@ -139,8 +139,8 @@ void lfpRatiometer::calcRatio() {
     if (in_raw.size() == N) {
         makePSD();
 
-        double lf_total = 0;
-        double hf_total = 0;
+        lf_total = 0;
+        hf_total = 0;
 
         // iterates over PSD, calculating running sums in each band
         for (int n=0; n<f_size; n++){

@@ -62,6 +62,8 @@ class lfpRatiometer {
 
         std::vector<double> psd;
         double lf_hf_ratio;
+        double lf_total;
+        double hf_total;
         double lf_low;
         double lf_high;
         double hf_low;

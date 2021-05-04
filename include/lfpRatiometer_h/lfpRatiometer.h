@@ -30,6 +30,8 @@ class lfpRatiometer {
 
         // getting parameters
         double getRatio() const { return lf_hf_ratio; };
+        double getLFpower() const { return lf_total; };
+        double getHFpower() const { return hf_total; };
         std::vector<double> getFreqs() { return allfreqs; };
         std::vector<double> getPSD() { return psd; }
         std::vector<double> getFreqBounds() { 

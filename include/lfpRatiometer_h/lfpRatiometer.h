@@ -14,6 +14,9 @@ class lfpRatiometer {
         // destructor
         ~lfpRatiometer(void);
 
+        // changing FFT plan (for RTXI only)
+        void changeFFTPlan(int N_input, double sampling_input);
+
         // calculate LF/HF ratio
         void calcRatio();
 
@@ -27,8 +30,18 @@ class lfpRatiometer {
 
         // getting parameters
         double getRatio() const { return lf_hf_ratio; };
+        double getLFpower() const { return lf_total; };
+        double getHFpower() const { return hf_total; };
         std::vector<double> getFreqs() { return allfreqs; };
         std::vector<double> getPSD() { return psd; }
+        std::vector<double> getFreqBounds() { 
+            std::vector<double> freqbounds;
+            freqbounds.push_back(lf_low);
+            freqbounds.push_back(lf_high);
+            freqbounds.push_back(hf_low);
+            freqbounds.push_back(hf_high);
+            return freqbounds;
+        };
 
 
         // modifying raw time series
@@ -51,6 +64,8 @@ class lfpRatiometer {
 
         std::vector<double> psd;
         double lf_hf_ratio;
+        double lf_total;
+        double hf_total;
         double lf_low;
         double lf_high;
         double hf_low;

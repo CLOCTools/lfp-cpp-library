@@ -18,7 +18,7 @@ lfpRatiometer::lfpRatiometer(int N_input, double sampling_input) {
     hf_high = 90;
     
     // setting default window
-    window_hamming();
+    window_rect();
 
     // establishing frequencies that will be associated with DFT output
     for (int n=0; n<f_size;n++){
@@ -48,6 +48,31 @@ lfpRatiometer::~lfpRatiometer(void) {
     fftw_free(in);
 
     return;
+}
+
+// this function changes the FFT plan (previously defined in the constructor)
+// the existence of this function is very imperfect 
+// this function probably shouldn't be used except for the RTXI plugin
+void lfpRatiometer::changeFFTPlan(int N_input, double sampling_input) {
+    // destroying previous FFT plan (similar to destructor)
+    fftw_destroy_plan(p);
+    fftw_free(out);
+    fftw_free(in);
+
+    // making new plan (similar to constructor)
+    N=N_input;
+    f_size=N/2 + 1;
+    sampling=sampling_input;
+
+    allfreqs.clear();
+    for (int n=0; n<f_size;n++){
+        allfreqs.push_back(sampling*n/N);
+    }
+
+    in = (double*) fftw_malloc(sizeof(double)*N);
+    out = fftw_alloc_complex(N);
+    p = fftw_plan_dft_r2c_1d(N,in,out,FFTW_MEASURE);
+
 }
 
 // allows users to set ends of LF&HF bands
@@ -114,8 +139,8 @@ void lfpRatiometer::calcRatio() {
     if (in_raw.size() == N) {
         makePSD();
 
-        double lf_total = 0;
-        double hf_total = 0;
+        lf_total = 0;
+        hf_total = 0;
 
         // iterates over PSD, calculating running sums in each band
         for (int n=0; n<f_size; n++){
@@ -130,7 +155,8 @@ void lfpRatiometer::calcRatio() {
         // take ratio
         lf_hf_ratio = lf_total/hf_total;
     }
-    else {lf_hf_ratio = nan("");}
+    // else {lf_hf_ratio = nan("");}
+    else {lf_hf_ratio = -1;}
     
 
 }

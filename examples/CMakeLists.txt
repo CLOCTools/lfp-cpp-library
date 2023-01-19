@@ -1,7 +1,4 @@
 # e.g., add executable
-add_executable(example_program_1 example_program_1.cpp)
-target_link_libraries(example_program_1 PUBLIC ${CMAKE_PROJECT_NAME} ${PROJECT_LIBS})
-
 add_executable(eg_time_buffer eg_time_buffer.cpp)
 target_link_libraries(eg_time_buffer PUBLIC ${CMAKE_PROJECT_NAME} ${PROJECT_LIBS})
 

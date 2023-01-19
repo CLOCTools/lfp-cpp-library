@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 project(lfpRatiometer VERSION 0.1.0 LANGUAGES CXX C)
 # some name variants I will be using:
 set(CMAKE_PROJECT_NAME_CAP LFPRATIOMETER)#all caps
-set(PROJECT_URL https://github.com/amborsa10/lfp-cpp-library)
+set(PROJECT_URL https://github.com/CLOCTools/lfp-cpp-library/tree/cortical_state)
 set(CMAKE_PROJECT_DESCRIPTION "LFP CXX Library")
 
 # WINDOWS WARNING

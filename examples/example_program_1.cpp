@@ -10,13 +10,6 @@ int main () {
     // apply a Hamming window
     lfpratiometer.window_hamming();
 
-    // setting LF/HF parameters
-    double lf_low = 1;
-    double lf_high = 25;
-    double hf_low = 30;
-    double hf_high = 90;
-    lfpratiometer.setRatioParams(lf_low, lf_high, hf_low, hf_high);
-
     // inputting a specific time series...
     std::vector<double> in_raw;
     for (int j=0; j<N; j++) {
@@ -30,11 +23,10 @@ int main () {
         lfpratiometer.pushTimeSample(in_raw[j]);
     }
 
-    // calculating lf/hf ratio
-    lfpratiometer.calcRatio();
+    // calculating PSD
+    lfpratiometer.makePSD();
 
     // grabbing variables from object
-    double lf_hf_ratio = lfpratiometer.getRatio();
     std::vector<double> allfreqs = lfpratiometer.getFreqs();
     std::vector<double> psd = lfpratiometer.getPSD();
 
@@ -43,17 +35,15 @@ int main () {
     for (int i=0; i<N/2+1; i++) {
         std::cout << allfreqs[i] << "," << psd[i] << "\n";
     }
-    std::cout << "LF/HF Ratio: " << lf_hf_ratio << "\n";
 
     // inputting the same time series ...
     // ...by setting object time series directly
     lfpratiometer.setTimeSeries(in_raw);
 
-    // calculating lf/hf ratio
-    lfpratiometer.calcRatio();
+    // calculating PSD
+    lfpratiometer.makePSD();
 
     // grabbing variables from object
-    lf_hf_ratio = lfpratiometer.getRatio();
     allfreqs = lfpratiometer.getFreqs();
     psd = lfpratiometer.getPSD();
 
@@ -62,7 +52,6 @@ int main () {
     for (int i=0; i<N/2+1; i++) {
         std::cout << allfreqs[i] << "," << psd[i] << "\n";
     }
-    std::cout << "LF/HF Ratio: " << lf_hf_ratio << "\n";
 
     return 0;
 
